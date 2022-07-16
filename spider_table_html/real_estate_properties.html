@@ -1,0 +1,50 @@
+<style>
+        table, th, td {
+          border:1px solid black;
+        }
+</style>
+<br>
+<p>Table ref_feature_types</p>
+<table style="width:70%">
+	<tr><td>feature_type_code</td><td>feature_type_name</td><tr>
+	<tr><td>Amenity</td><td>Amenity, eg Pool.</td><tr>
+	<tr><td>Security</td><td>Securiyt, eg Burglar Alarm.</td><tr>
+	<tr><td>...</td><td>...</td><tr>
+</table>
+<br>
+<p>Table ref_property_types</p>
+<table style="width:70%">
+	<tr><td>property_type_code</td><td>property_type_description</td><tr>
+	<tr><td>House</td><td>House, Bungalow, etc.</td><tr>
+	<tr><td>Apartment</td><td>Apartment, Flat, Condo, etc.</td><tr>
+	<tr><td>Field</td><td>Field, Meadow.</td><tr>
+	<tr><td>...</td><td>...</td><tr>
+</table>
+<br>
+<p>Table other_available_features</p>
+<table style="width:70%">
+	<tr><td>feature_id</td><td>feature_type_code</td><td>feature_name</td><td>feature_description</td><tr>
+	<tr><td>2</td><td>Amenity</td><td>AirCon</td><td>Air Conditioning.</td><tr>
+	<tr><td>3</td><td>Amenity</td><td>Pool</td><td>Swimming Pool.</td><tr>
+	<tr><td>4</td><td>Security</td><td>BurglarAlarm</td><td>Burglar Alarm</td><tr>
+	<tr><td>...</td><td>...</td><td>...</td><td>...</td><tr>
+</table>
+<br>
+<p>Table properties</p>
+<table style="width:70%">
+	<tr><td>property_id</td><td>property_type_code</td><td>date_on_market</td><td>date_sold</td><td>property_name</td><td>property_address</td><td>room_count</td><td>vendor_requested_price</td><td>buyer_offered_price</td><td>agreed_selling_price</td><td>apt_feature_1</td><td>apt_feature_2</td><td>apt_feature_3</td><td>fld_feature_1</td><td>fld_feature_2</td><td>fld_feature_3</td><td>hse_feature_1</td><td>hse_feature_2</td><td>hse_feature_3</td><td>oth_feature_1</td><td>oth_feature_2</td><td>oth_feature_3</td><td>shp_feature_1</td><td>shp_feature_2</td><td>shp_feature_3</td><td>other_property_details</td><tr>
+	<tr><td>1</td><td>House</td><td>1991-06-21 23:52:10</td><td>1979-05-13 16:58:06</td><td>park</td><td>4745 Emerson Stravenue Suite 829\nSouth Garret, IN 16772-5682</td><td>7</td><td>372652.2909</td><td>1.68</td><td>4201.8</td><td>aut</td><td>suscipit</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><tr>
+	<tr><td>2</td><td>House</td><td>1990-05-25 23:01:51</td><td>1990-11-14 19:16:38</td><td>the cole</td><td>098 Tremaine Highway Suite 569\nSouth Wilford, NJ 46587-3537</td><td>1</td><td>661536468.4429</td><td>8.7122</td><td>21769471.8328</td><td>est</td><td>est</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><tr>
+	<tr><td>3</td><td>Other</td><td>1986-11-26 04:12:18</td><td>1981-06-26 21:28:28</td><td>prism</td><td>062 Micaela Court Apt. 707\nMargretville, WV 51628-3617</td><td>8</td><td>1337</td><td>11375259.502</td><td>5</td><td>ut</td><td>et</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><td>None</td><tr>
+	<tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><tr>
+</table>
+<br>
+<p>Table other_property_features</p>
+<table style="width:70%">
+	<tr><td>property_id</td><td>feature_id</td><td>property_feature_description</td><tr>
+	<tr><td>15</td><td>3</td><td>dolorem</td><tr>
+	<tr><td>12</td><td>4</td><td>earum</td><tr>
+	<tr><td>6</td><td>2</td><td>illo</td><tr>
+	<tr><td>...</td><td>...</td><td>...</td><tr>
+</table>
+<br>
