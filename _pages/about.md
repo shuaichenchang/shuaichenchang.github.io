@@ -7,17 +7,17 @@ redirect_from:
   - /about.html
 ---
 
-I am an applied scientist at AWS AI Lab in New York. Before joining AWS, I obtained my Ph.D. in Computer Science Department at The Ohio State University, advised by Prof. [Eric Fosler-Lussier](https://efosler.github.io/). Prior to OSU, I obtained my B.S. at Fudan University, advised by Prof. [Xipeng Qiu](https://xpqiu.github.io/en.html).
+I am an AI researcher at the AWS AI Lab in New York and a founding member of the AWS Bedrock RAG and Agentic AI Science team. Before joining AWS, I obtained my Ph.D. in Computer Science Department at The Ohio State University, advised by Prof. [Eric Fosler-Lussier](https://efosler.github.io/). Prior to OSU, I obtained my B.S. at Fudan University, advised by Prof. [Xipeng Qiu](https://xpqiu.github.io/en.html).
 
 ## Research Interests
 
-My research focuses on building robust and generalizable AI systems that interact with data and environments through natural language. My work spans several interconnected areas:
+My research focuses on building robust and generalizable AI models and systems that interact with data and environments through natural language. My work spans several interconnected areas:
 
-**Natural Language Interfaces to Data**: I develop methods for enabling natural language interaction with structured and semi-structured data, including text-to-SQL systems, table understanding, and database question answering. A significant focus of my work is on improving robustness and cross-domain generalization of these systems.
+**Natural Language Interfaces to Data**: I develop methods for enabling natural language interaction with structured and semi-structured data, including text-to-SQL, table understanding, and database question answering. A significant focus of my work is on improving robustness and cross-domain generalization of these models and systems.
 
-**Retrieval-Augmented Generation (RAG)**: My team at AWS develops advanced RAG systems for production deployment, focusing on diagnostic evaluation frameworks and practical solutions for improving retrieval quality and generation faithfulness.
+**Retrieval-Augmented Generation (RAG)**: I develop advanced RAG solutions focusing on heterogeneous data retrieval, agentic retrieval, and diagnostic evaluation frameworks.
 
-**Agentic AI and Computer-Use Agents**: I am actively working on building autonomous AI agents that can interact with computer environments, including developing retrieval-augmented world models for agent planning and automated composition frameworks for agentic systems.
+**Agentic AI and Computer-Use Agents**: I am actively working on building autonomous agents that interact with computer environments and orchestrate complex workflows. My recent work includes retrieval-augmented world models for agent planning and automated frameworks for composing agent systems.
 
 **Table Representation Learning**: I work on instruction tuning for table understanding tasks and developing methods to improve model performance on structured data. I also co-organized the [Table Representation Learning workshop](https://table-representation-learning.github.io/ACL2025/) at ACL 2025.
 
