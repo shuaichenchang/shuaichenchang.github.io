@@ -14,7 +14,7 @@ That said, we need continual learning and memory in our AI models.
 ## Model Hidden State as Memory
 The term "memory" in neural networks is not new: RNN has used the hidden state as a form of memory which was carried over to new timesteps (which we now call tokens). The following work Long Short-Term Memory ([LSTM](https://deeplearning.cs.cmu.edu/S23/document/readings/LSTM.pdf)) directly uses the term "memory" to refer to the hidden state.
 
-![LSTM](2025-12-31-continual-learning-memory/lstm.svg)
+![LSTM](/images/blogs/2025-12-31-continual-learning-memory/lstm.svg)
 
 At a high level, we can regard the memory update as $c_t=F(x_t, c_{t-1})$, where $c_t$ and $c_{t-1}$ are the memory at timestep $t$ and $t-1$ respectively, and $x_t$ is the input at timestep $t$. 
 
@@ -26,7 +26,7 @@ However, it has two issues in practice: (1) the fixed-length hidden vector as me
 
 In the first modern attention [paper](https://arxiv.org/pdf/1409.0473), it proposed to keep the hidden vectors of all the encoding tokens, and use attention to search over them during decoding for machine translation. (It is an encoder-decoder framework, different from the current decoder-only LLMs.) The RNN + Attention architecture utilizes two types of memories: The RNN hidden state which is a fixed-size vector, and the activations of encoding tokens, whose size is linear to the input length. The attention was already very similar to our familiar attention in [Transformers](https://arxiv.org/pdf/1706.03762), which serves as the only working memory of the model. 
 
-![alt text](2025-12-31-continual-learning-memory/rnn_attention.png)
+![RNN Attention](/images/blogs/2025-12-31-continual-learning-memory/rnn_attention.png)
 
 
 ## External Vectors as Memory
