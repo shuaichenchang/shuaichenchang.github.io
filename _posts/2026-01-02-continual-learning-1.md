@@ -157,7 +157,7 @@ $$
 $$
 
 
-[^1]: Titans paper also leverages memory forgetting rate and surprise momentum, which we omit here for simplification.
+[^1]: The Titans paper incorporates gradient descent with momentum and weight decay, motivated by analogies to memory forgetting and surprise memory momentum. We omit these details here for simplicity.
 
 
 ## References
