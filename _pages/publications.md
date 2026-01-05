@@ -21,7 +21,7 @@ Michelle Yuan, Khushbu Pahwa, Shuaichen Chang, Mustafa Kaba, Jiarong Jiang, Xiao
 
 **Towards Better Understanding Table Instruction Tuning: Decoupling the Effects from Data versus Models** [[PDF](https://arxiv.org/pdf/2501.14717)]<br>
 Naihao Deng, Sheng Zhang, Henghui Zhu, Shuaichen Chang, Jiani Zhang, Alexander Hanbo Li, Chung-Wei Hang, Hideo Kobayashi, Yiqun Hu, Patrick Ng<br>
-*Preprint 2025*
+*EACL 2026*
 
 **PRACTIQ: A Practical Conversational text-to-SQL dataset with Ambiguous and Unanswerable Queries** [[PDF](https://arxiv.org/pdf/2410.11076)]<br>
 Mingwen Dong, Nischal Ashok Kumar, Yiqun Hu, Anuj Chauhan, Chung-Wei Hang, Shuaichen Chang, Lin Pan, Wuwei Lan, Henghui Zhu, Jiarong Jiang, Patrick Ng, Zhiguo Wang<br>
