@@ -32,8 +32,8 @@ o_t &=
 }
 v_j,
 \end{aligned}
-
 $$
+
 where $q, k, v \in \mathbb{R}^{d_{\text{in}}}$, and $W_q, W_k, W_v \in \mathbb{R}^{d_{\text{in}}\times d_{\text{in}}}$.
 
 The [Linear Attention paper](https://arxiv.org/pdf/2006.16236) points out that for any non-negative similarity function $\text{sim}(q_t, k_j)$, including softmax, there exists a feature map $\phi$ (potentially in infinite dimensions) such that $\text{sim}(q_t, k_j)=\phi(q_t)^\top\phi(k_j)$. Under this formulation, attention can be rewritten as: 
