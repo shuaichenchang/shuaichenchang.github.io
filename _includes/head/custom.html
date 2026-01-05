@@ -21,6 +21,74 @@ MathJax = {
 </script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
 
+<!-- Custom styles for footnotes -->
+<style>
+.footnotes {
+  font-size: 0.9em !important;
+  color: #000000 !important;
+}
+.footnotes ol li {
+  color: #000000 !important;
+}
+.footnotes p {
+  color: #000000 !important;
+  font-size: 1em !important;
+}
+
+/* Footnote tooltip styles */
+.footnote-tooltip {
+  position: absolute;
+  background: #333;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  max-width: 300px;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.footnote-tooltip.show {
+  opacity: 1;
+}
+sup a[href^="#fn:"] {
+  cursor: help;
+}
+</style>
+
+<!-- Footnote hover tooltip script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const footnoteRefs = document.querySelectorAll('a[href^="#fn:"]');
+  const tooltip = document.createElement('div');
+  tooltip.className = 'footnote-tooltip';
+  document.body.appendChild(tooltip);
+
+  footnoteRefs.forEach(function(ref) {
+    ref.addEventListener('mouseenter', function(e) {
+      const footnoteId = this.getAttribute('href').substring(1);
+      const footnote = document.getElementById(footnoteId);
+
+      if (footnote) {
+        const content = footnote.textContent.replace(/↩.*$/, '').trim();
+        tooltip.textContent = content;
+        tooltip.classList.add('show');
+
+        const rect = this.getBoundingClientRect();
+        tooltip.style.left = rect.left + 'px';
+        tooltip.style.top = (rect.bottom + window.scrollY + 5) + 'px';
+      }
+    });
+
+    ref.addEventListener('mouseleave', function() {
+      tooltip.classList.remove('show');
+    });
+  });
+});
+</script>
+
 <!-- favicon from https://commons.wikimedia.org/wiki/File:OOjs_UI_icon_academic-progressive.svg -->
 <link rel="apple-touch-icon" sizes="180x180" href="{{ base_path }}/images/apple-touch-icon-180x180.png"/>
 <link rel="icon" type="image/svg+xml" href="{{ base_path }}/images/favicon.svg"/>
