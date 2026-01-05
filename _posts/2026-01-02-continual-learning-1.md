@@ -20,8 +20,9 @@ While traditional attention has enabled in-context learning, it is limited by it
 [Transformer-based](https://arxiv.org/pdf/1706.03762) language models capture the dependency between the current token and previous tokens using the attention mechanism, which is based on a softmax over the previous tokens. Formally, the attention output $o_t$ can be written as:
 
 $$
-q=xW_q, \quad k=xW_k, \quad v=xW_v, \\
-o_t =
+\begin{aligned}
+q&=xW_q, \quad k=xW_k, \quad v=xW_v, \\
+o_t &=
 \sum_{j=1}^{t}
 \frac{
 \exp\!\left( q_t^\top k_j / \sqrt{d_{\text{in}}} \right)
@@ -30,13 +31,15 @@ o_t =
 \exp\!\left( q_t^\top k_l / \sqrt{d_{\text{in}}} \right)
 }
 v_j,
+\end{aligned}
 $$
 where $q, k, v \in \mathbb{R}^{d_{\text{in}}}$, and $W_q, W_k, W_v \in \mathbb{R}^{d_{\text{in}}\times d_{\text{in}}}$.
 
-The [Linear Attention paper](https://arxiv.org/pdf/2006.16236) points out that for any non-negative similarity function $\text{sim}(q_t, k_j)$, including softmax, there exists a feature map $\phi$ (potentially in infinite dimensions) such that $\text{sim}(q_t, k_j)=\phi(q_t)^\top\phi(k_j)$. Under this formulation, attention can be rewritten as:
+The [Linear Attention paper](https://arxiv.org/pdf/2006.16236) points out that for any non-negative similarity function $\text{sim}(q_t, k_j)$, including softmax, there exists a feature map $\phi$ (potentially in infinite dimensions) such that $\text{sim}(q_t, k_j)=\phi(q_t)^\top\phi(k_j)$. Under this formulation, attention can be rewritten as: 
 
 $$
-o_t =
+\begin{aligned}
+o_t &=
 \sum_{j=1}^{t}
 \frac{
 \text{sim}\!\left(q_t,k_j\right)
@@ -44,8 +47,8 @@ o_t =
 \sum_{l=1}^{t}
 \text{sim}\!\left(q_t, k_l\right)
 }
-v_j
-=
+v_j \\
+&=
 \sum_{j=1}^{t}
 \frac{
 \phi(q_t)^\top \phi(k_j)
@@ -53,13 +56,14 @@ v_j
 \sum_{l=1}^{t}
 \phi(q_t)^\top \phi(k_l)
 }
-v_j
-=
+v_j \\
+&=
 \frac{
 \phi(q_t)^\top \sum_{j=1}^{t} \phi(k_j) v_j
 }{
 \phi(q_t)^\top \sum_{l=1}^{t} \phi(k_l)
 }
+\end{aligned}
 $$
 
 The key insight is that $\sum_{j=1}^{t} \phi(k_j) v_j^\top$ can be computed recurrently, which can be written in a recurrent format.
