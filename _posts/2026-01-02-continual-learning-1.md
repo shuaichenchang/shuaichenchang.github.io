@@ -21,7 +21,6 @@ While traditional attention has enabled in-context learning, it is limited by it
 
 $$
 q=xW_q, \quad k=xW_k, \quad v=xW_v, \\
-
 o_t =
 \sum_{j=1}^{t}
 \frac{
