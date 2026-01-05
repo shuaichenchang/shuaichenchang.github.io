@@ -1,6 +1,6 @@
 ---
 title: 'Continual Learning and Memory (1): Titans and End-to-End Test-Time Training'
-date: 2026-1-2
+date: 2026-1-4
 permalink: /posts/2026/test-time-learning-1/
 tags:
   - continual-learning
@@ -32,6 +32,7 @@ o_t &=
 }
 v_j,
 \end{aligned}
+
 $$
 where $q, k, v \in \mathbb{R}^{d_{\text{in}}}$, and $W_q, W_k, W_v \in \mathbb{R}^{d_{\text{in}}\times d_{\text{in}}}$.
 
