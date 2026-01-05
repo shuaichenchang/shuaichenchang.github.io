@@ -77,19 +77,24 @@ From this perspective, the goal of linear attention is to compress the keys and 
 
 ## Titans
 Since memory can be represented in a recurrent form, Titans uses a more general formulation:
+
 $$
-M_t = f(M_{t-1}, x_t),
+\begin{aligned}
+M_t &= f(M_{t-1}, x_t),\\
+\tilde{y}_t &= g(M_t,x_t),
+\end{aligned}
 $$
-$$
-\tilde{y}_t = g(M_t,x_t),
-$$
+
 where the functions $f$ and $g$ can be viewed as memory write and memory read operations, respectively. Here, $M_t$ itself can be a neural network (e.g., an MLP), rather than a simple vector or matrix.
 
 The next question is how to learn and update the memory unit $M_t$. The Titans paper motivates this from a perspective inspired by human memory: events that violate expectations (i.e., are surprising) are more memorable for humans. Accordingly, Titans uses a surprise signal, measured via prediction error, to update the memory. Concretely, the memory is updated using gradient descent with momentum and weight decay[^1]:
+
 $$
 M_t = M_{t−1} − \eta_t \nabla\ell(M_{t−1}; x_t),
 $$
+
 where $\eta_t$ is the learning rate at timestep $t$ and the surprise score $\ell$ is defined as:
+
 $$
 \ell(M_{t-1}; x_t) = ||M_{t-1}(k_t)-v_t||_2^2
 $$
@@ -97,13 +102,18 @@ $$
 
 We can also understand this mechanism from a more traditional machine learning perspective. After the memory write, $M_t$ should contain the key $k_t$ and its corresponding value $v_t$, such that the value can be retrieved given the key. In other words, we want:
 
-$$M_t(k_t) = v_t$$
+$$
+M_t(k_t) = v_t
+$$
 
 If we treat $M$ as a set of model parameters, then updating $M$ so that the prediction $M(k_t)$ matches the target $v_t$ is simply a standard supervised learning problem. The update from $M_{t-1}$ to $M_t$ naturally follows from gradient descent on the loss:
+
 $$
 \ell(M_{t-1}; x_t) = ||M_{t-1}(k_t)-v_t||_2^2,
 $$
+
 which yields:
+
 $$
 M_t = M_{t−1} − \eta_t \nabla\ell(M_{t−1}; x_t)
 $$
@@ -115,9 +125,11 @@ Recall that the memory update itself can be viewed as a function $f$ in the recu
 
 ## TTT-E2E
 While Titans learns the memory $M_t$ by associating $K_{<t}$ and $V_{<t}$, TTT-E2E argues that since the goal of memorizing past knowledge is to improve future predictions, a more straightforward objective can be used:
+
 $$
 \ell(M_{t-1}; x_t) = \text{CE}(g(M_{t-1},x_{t-1}), x_t),
 $$
+
 which is the cross-entropy loss for next-token prediction, where $g(M_{t-1}, x_{t-1})$ produces the logits for predicting token $x_t$. As a result, the same loss function is used to train the memory during both training and test time. Furthermore, TTT-E2E uses some of the MLP layers in Transformers as the memory $M$, achieving continual learning without changing the Transformer architecture.
 
 ## Parallel Training
@@ -132,10 +144,13 @@ $$
 This is parallelizable because all gradients $\nabla\ell(M_{t'},x_i)$ depend on the same $M_{t'}$ and can be computed simultaneously. The partial sums can then be accumulated efficiently using [parallel prefix sum algorithms](https://www.cs.cmu.edu/~guyb/papers/Ble93.pdf).
 
 TTT-E2E uses an even simpler formulation. Within each chunk, the memory unit $M$ remains constant and is updated only after the entire chunk is processed. As a result, all tokens within the chunk can be computed in parallel. For $i = 1, ..., T/b$, we have:
+
 $$
 M_i = M_{i−1} − \eta_i \frac{1}{b} \sum_{t=(i-1)b+1}^{ib} \nabla\ell(M_{i−1}; 𝑥_t)
 $$
+
 Both methods enable parallelization within each chunk. However, this introduces another issue: $M_t$ becomes stale or imprecise within the chunk, as it does not reflect the most recent tokens and memory. This can affect the output prediction, which originally takes the form $\tilde{y}_t = g(M_t, x_t)$. To mitigate this issue, both Titans and TTT-E2E retain full self-attention within each chunk, modifying the output prediction to:
+
 $$
 \tilde{y}_t = g(M_t,x_t, K[t'+1:t], V[t'+1:t])
 $$
