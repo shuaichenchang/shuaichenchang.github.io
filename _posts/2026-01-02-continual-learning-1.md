@@ -131,7 +131,7 @@ $$
 \ell(M_{t-1}; x_t) = \text{CE}(g(M_{t-1},x_{t-1}), x_t),
 $$
 
-which is the cross-entropy loss for next-token prediction, where $g(M_{t-1}, x_{t-1})$ produces the logits for predicting token $x_t$. As a result, the same loss function is used to train the memory during both training and test time. Furthermore, TTT-E2E uses some of the MLP layers in Transformers as the memory $M$, achieving continual learning without changing the Transformer architecture.
+which is the cross-entropy loss for next-token prediction, where $g(M_{t-1}, x_{t-1})$ produces the logits for predicting token $x_t$. As a result, the same loss function is used to train the memory during both training and test time. Since the memory unit does not rely on a separate, memory-specific loss function, it is straightforward to train multiple memory units (e.g., layers) together. In particular, TTT-E2E reuses some of existing MLP layers in Transformers as the memory $M$, enabling continual learning without modifying the Transformer architecture.
 
 ## Parallel Training
 Both Titans and TTT-E2E rely on a recurrently updated memory unit, which requires $O(T)$ FLOPs during both training and test time. While it is efficient at test time, the recurrent nature of the memory does not naturally support token-level parallelization during training, making it less efficient than standard Transformers in practice. To address this issue, both papers adopt chunking/batching, partitioning the input token sequence to enable parallel computation within chunks.
