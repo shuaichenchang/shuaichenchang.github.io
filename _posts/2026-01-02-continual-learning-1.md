@@ -2,6 +2,7 @@
 title: 'Continual Learning and Memory (1): Titans and End-to-End Test-Time Training'
 date: 2026-1-4
 permalink: /posts/2026/test-time-learning-1/
+author: Shuaichen Chang
 tags:
   - continual-learning
   - test-time training
