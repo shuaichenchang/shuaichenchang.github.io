@@ -36,6 +36,19 @@ MathJax = {
   font-size: inherit !important;
 }
 
+/* Image sizing and centering */
+.page__content p[align="center"] {
+  text-align: center !important;
+}
+.page__content p[align="center"] img {
+  display: inline-block !important;
+  max-width: 100% !important;
+}
+.page__content img[width] {
+  width: attr(width px) !important;
+  height: auto !important;
+}
+
 /* Footnote tooltip styles */
 .footnote-tooltip {
   position: absolute;
