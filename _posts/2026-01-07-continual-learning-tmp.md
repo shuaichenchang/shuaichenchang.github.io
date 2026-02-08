@@ -10,5 +10,5 @@ tags:
 ---
 
 <p align="center">
-<img src="/images/blogs/2025-12-31-continual-learning-memory/rnn_attention.png" style="width: 400px; max-width: 100%;">
+<img src="/images/blogs/2025-12-31-continual-learning-memory/rnn_attention.png" style="width: 100px; max-width: 100%;">
 </p>
