@@ -148,7 +148,6 @@ $$
 
 Interestingly, this update rule is equivalent to one step of gradient descent on an L2 loss function that measures the reconstruction error of the key-value pair:
 
-Interestingly, this is equivalent to standard gradient descent if we use L2 loss function to measure the difference between the associated values of $k_t$ in $S$ before and after the update.
 $$
 \begin{aligned}
 \ell(S_{t-1}; k_t) &= ||v_t-k_t^\top S_{t-1}||_2^2 \\
