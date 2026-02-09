@@ -43,7 +43,7 @@ This mechanism laid the groundwork for the standard attention found in [Transfor
 
 $$
 \begin{aligned}
-q&=W_qx, \quad k=W_kx, \quad v=W_vx, \\
+q&=xW_q, \quad k=xW_k, \quad v=xW_v, \\
 o_t &=
 \sum_{j=1}^{t}
 \frac{
