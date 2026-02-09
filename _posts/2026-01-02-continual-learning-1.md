@@ -61,7 +61,7 @@ v_j \\
 v_j \\
 &=
 \frac{
-\phi(q_t)^\top \sum_{j=1}^{t} \phi(k_j) v_j
+\phi(q_t)^\top \sum_{j=1}^{t} \phi(k_j) v_j^\top
 }{
 \phi(q_t)^\top \sum_{l=1}^{t} \phi(k_l)
 }
@@ -71,7 +71,7 @@ $$
 The key insight is that $\sum_{j=1}^{t} \phi(k_j) v_j^\top$ can be computed recurrently, which can be written in a recurrent format.
 
 $$
-M_t = M_{t−1} + \phi(k_t) v_t
+M_t = M_{t−1} + \phi(k_t) v_t^\top
 $$
 
 From this perspective, the goal of linear attention is to compress the keys and values into $M$, which serves as a form of fast, associative memory.
