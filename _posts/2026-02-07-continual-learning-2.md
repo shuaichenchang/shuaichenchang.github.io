@@ -16,6 +16,11 @@ The concept of "memory" in neural networks is far from new. Recurrent Neural Net
 
 ![LSTM](/images/blogs/2025-12-31-continual-learning-memory/lstm.svg)
 
+<p align="center">
+<img src="/images/blogs/2025-12-31-continual-learning-memory/lstm.svg" style="width: 400px; max-width: 100%;">
+</p>
+
+
 At a high level, we can view the memory update as $c_t=f(x_t, c_{t-1})$, where $c_t$ and $c_{t-1}$ represent the memory at the current and previous timesteps, and $x_t$ is the current input. LSTMs introduce a forget gate and an input gate to regulate how much of the past memory $c_{t-1}$ is retained and how much new information from $x_t$ is added.
 
 In theory, this recurrent memory allows information to be carried over indefinitely—from previous tasks to new ones. Aha! It turns out we had long-context language models for continual learning over 30 years ago.
@@ -31,7 +36,7 @@ However, it has two practical issues:
 The first modern [attention paper](https://arxiv.org/pdf/1409.0473), proposed a solution: keep the RNN hidden vectors for all encoded tokens and use an attention mechanism to search over them during decoding. (Note: This was originally an encoder-decoder framework for machine translation, distinct from today's decoder-only LLMs). The RNN + Attention This architecture effectively utilizes two types of memory: (1) RNN hidden state, which is a fixed-size vector representing compressed context, (2) token activations which is growing buffer of states with a size linear to the input length.
 
 <p align="center">
-<img src="/images/blogs/2025-12-31-continual-learning-memory/rnn_attention.png" style="width: 200px; max-width: 100%;">
+<img src="/images/blogs/2025-12-31-continual-learning-memory/rnn_attention.png" style="width: 250px; max-width: 100%;">
 </p>
 
 This mechanism laid the groundwork for the standard attention found in [Transformers](https://arxiv.org/pdf/1706.03762), which relies exclusively on this retrieved history as its working memory.
@@ -176,6 +181,11 @@ Following the rise of attention mechanisms in machine translation, researchers b
 
 
 More recently, architectures like [MemoryLLM](https://arxiv.org/pdf/2402.04624) have augmented the standard Transformer attention mechanism by maintaining a set of external memory vectors.
+
+<p align="center">
+<img src="/images/blogs/2025-12-31-continual-learning-memory/memoryllm.png" style="width: 250; max-width: 100%;">
+</p>
+
 During generation, MemoryLLM attends to both the local context and the global memory pool, extending the standard formulation $Attention(Q, K, V)$ to:
 $$
 Attention(Q_X, [K_M;K_X], [V_M;V_X]),
@@ -194,10 +204,11 @@ Recently, the authors of the [Memory layers paper](https://arxiv.org/pdf/2412.09
 They propose replacing the dense FFN layers in Transformer blocks with a Memory Lookup Layer. This sparse architecture allows for storing millions of memory slots, orders of magnitude more than a standard FFN, while maintaining efficient retrieval.
 
 <p align="center">
-<img src="/images/blogs/2025-12-31-continual-learning-memory/memory_layer.png" style="width: 200px; max-width: 100%;">
+<img src="/images/blogs/2025-12-31-continual-learning-memory/memory_layer.png" style="width: 400px; max-width: 100%;">
 </p>
 
 The memory layer contains a set of trainable parameters: keys $K \in \mathbb{R}^{d \times N}$ and values $V \in \mathbb{R}^{d \times N}$. Unlike the dynamic activations in attention, these parameters store static memory from pre-training data. At test time, a query $q \in \mathbb{R}^d$ is used to retrieve only the top-$k$ relevant keys ($k \ll N$), followed by a standard attention operation over just those $k$ slots:
+
 $$
 \begin{aligned}
 I &= TopkIndices(Kq), \\

@@ -13,7 +13,7 @@ You can also find my articles on [Google Scholar](https://scholar.google.com/cit
 
 **R-WoM: Retrieval-augmented World Model For Computer-use Agents** [[PDF](https://arxiv.org/pdf/2510.11892)]<br>
 Kai Mei, Jiang Guo, Shuaichen Chang, Mingwen Dong, Dongkyu Lee, Xing Niu, Jiarong Jiang<br>
-*Preprint 2025*
+*ICLR 2026*
 
 **Automated Composition of Agents: A Knapsack Approach for Agentic Component Selection** [[PDF](https://arxiv.org/pdf/2510.16499)]<br>
 Michelle Yuan, Khushbu Pahwa, Shuaichen Chang, Mustafa Kaba, Jiarong Jiang, Xiaofei Ma, Yi Zhang, Monica Sunkarag<br>
